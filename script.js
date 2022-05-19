@@ -1,0 +1,25 @@
+// 获取要操作的元素
+let items = document.querySelectorAll('.item');
+let current_tag = document.getElementsByClassName('current-tag');
+let handler = document.querySelector('.handler');
+let left_box = document.querySelector('.left-box');
+
+function setActive () {
+  items.forEach((item) => {
+    item.classList.remove('active');
+  })
+  this.classList.add('active');
+  current_tag.innerText = this.innerText;
+}
+
+// 为每个li设置点击事件
+items.forEach((item) => {
+  item.addEventListener('click', setActive);
+})
+
+// handler.addEventListener('click', function () {
+//   if (!this.classList.contains('close')) {
+//     left_box.style.width =
+//   }
+// })
+

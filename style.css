@@ -1,0 +1,218 @@
+*{
+  /* 初始化 */
+  margin:0;
+  padding: 0;
+}
+
+body{
+  /* 100%的窗口宽度和高度 */
+  width: 100vw;
+  height: 100vh;
+  /* 移除隐藏 */
+  overflow: hidden;
+  /* 背景 */
+  background: url(image/mountain.jpg) no-repeat;
+  background-size: cover;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  /* 弹性盒布局 */
+  display: flex;
+}
+
+/* 字体图标 */
+.iconfont{
+  color: #fff;
+  font-size: 24px;
+}
+
+/* 左侧导航栏 */
+.left-box{
+  width: 250px;
+  height: 100%;
+  /* 半透明背景 */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 背景模糊 */
+  backdrop-filter: blur(30px);
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  /* 弹性盒布局 ：垂直排列*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* 设置过渡 */
+  transition: 0.5s ease;
+  /* 不让文字换行 */
+  white-space: nowrap;
+}
+
+.left-box ul{
+  list-style: none;
+  width: 90%;
+  margin: 25px auto;
+  /* 高度铺满 */
+  flex: 1;
+}
+
+.left-box li{
+  height: 46px;
+  /* 弹性布局-垂直居中 */
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding-left: 12px;
+  cursor: pointer;
+  /* 过渡 */
+  transition: 0.2s ease;
+}
+
+/* 选中态样式 */
+.left-box li.active,
+.left-box li.active:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.left-box li:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.left-box hr{
+  width: 90%;
+  margin: 18px auto;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.left-box .iconfont{
+  margin-right: 16px;
+}
+
+/* 用户信息区 */
+.user-info{
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 24px;
+}
+
+.user-info img{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.user-info span{
+  flex: 1;
+}
+
+.user-info .iconfont{
+  margin-right: 0;
+}
+
+/* 右侧区域 */
+.right-box{
+  background-color: #0f0f0f;
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-box .top{
+  margin: 25px 35px;
+  display: flex;
+  align-items: center;
+  height: 46px;
+}
+
+.right-box .top .current-tag{
+  flex: 1;
+  color: #fff;
+  font-weight: 600;
+}
+
+.right-box .top .btn{
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.right-box .top .btn:last-child{
+  background-color: #446dff;
+  margin-left: 20px;
+}
+
+.right-box .middle{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #222;
+  font-size: 6vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* 展开收起开关 */
+.right-box .handler{
+  width: 10px;
+  height: 50px;
+  /* 绝对定位垂直居中 */
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  z-index: 1;
+  cursor: pointer;
+  /* 默认透明度为0 */
+  opacity: 0;
+  /* 过渡 */
+  transition: opacity 0.2s ease;
+}
+
+/* 上半部分 */
+.right-box .handler::before,
+.right-box .handler::after{
+  content: '';
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px 10px 0 0;
+  /* 过渡 */
+  transition: 0.3s;
+}
+
+/* 下半部分 */
+.right-box .handler::after{
+  bottom: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.right-box:hover .handler{
+  opacity: 1;
+}
+
+.right-box .handler:hover::before{
+  transform: skewX(-15deg);
+}
+
+.right-box .handler:hover::after{
+  transform: skewX(15deg);
+}
+
+.right-box .handler.close:hover::before{
+  transform: skewX(15deg);
+}
+
+.right-box .handler.close:hover::after{
+  transform: skewX(-15deg);
+}
